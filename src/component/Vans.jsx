@@ -5,14 +5,14 @@ const Vans = () => {
         Explore our van options
       </h1>
       <section className="flex justify-between items-center px-5 mt-5">
-        <div className="flex gap-5">
-          <button className="bg-[#FFEAD0] w-[104px] h-[37px] rounded-md font-int text-[#4d4d4d]">
+        <div className="flex gap-2">
+          <button className="bg-[#FFEAD0] w-[84px] h-[37px] rounded-md font-int text-[#4d4d4d]">
             Simple
           </button>
-          <button className="bg-[#FFEAD0] w-[104px] h-[37px] rounded-md font-int text-[#4d4d4d]">
+          <button className="bg-[#FFEAD0] w-[84px] h-[37px] rounded-md font-int text-[#4d4d4d]">
             Luxury
           </button>
-          <button className="bg-[#FFEAD0] w-[104px] h-[37px] rounded-md font-int text-[#4d4d4d]">
+          <button className="bg-[#FFEAD0] w-[84px] h-[37px] rounded-md font-int text-[#4d4d4d]">
             Rugged
           </button>
         </div>
