@@ -5,6 +5,7 @@ import About from "./component/About.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Vans from "./component/Vans.jsx";
+import './server'
 const router = createBrowserRouter([
   {
     path: "/",
