@@ -1,33 +1,49 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 const Host = () => {
   return (
     <div className="">
       <nav className="px-5 mt-5">
-        <Link
+        <NavLink
           to="/host/dashboard"
-          className="font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+          className={({ isActive }) =>
+            isActive
+              ? "font-int text-[18px]  text-[#161616] mr-6 font-bold "
+              : "font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+          }
         >
           Dashbord
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/host/income"
-          className="font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold  "
+          className={({ isActive }) =>
+            isActive
+              ? "font-int text-[18px]  text-[#161616] mr-6 font-bold "
+              : "font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+          }
         >
           Income
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/host/vanlist"
-          className="font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+          className={({ isActive }) =>
+            isActive
+              ? "font-int text-[18px]  text-[#161616] mr-6 font-bold "
+              : "font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+          }
         >
           Vanslist
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/host/review"
-          className="font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+          className={({ isActive }) =>
+            isActive
+              ? "font-int text-[18px]  text-[#161616] mr-6 font-bold "
+              : "font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+          }
         >
           Review
-        </Link>
+        </NavLink>
       </nav>
       <Outlet />
     </div>
