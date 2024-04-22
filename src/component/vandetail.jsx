@@ -13,7 +13,7 @@ const Vandetail = () => {
   return (
     <div>
       {detail ? (
-        <div className="bg-[#FFF7ED] px-6 py-6 max-w-xl mx-auto md:my-2 md:h-[100%] md:shadow-xl">
+        <div className="bg-[#FFF7ED] px-6 py-7 max-w-xl mx-auto md:my-2 md:h-[100%] md:shadow-xl">
           <div className="flex items-center gap-2 text-[#201f1d6a]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -34,11 +34,11 @@ const Vandetail = () => {
               Back to all vans
             </Link>
           </div>
-          <div className="py-2">
+          <div className="py-7">
             <img
               src={detail.imageUrl}
               alt=""
-              className="w-[397px] h-[300px] object-cover mx-auto rounded-md my-7"
+              className="w-[397px] h-[300px] object-cover mx-auto rounded-md my-10 shadow-xl"
             />
             <i className={` text-[#FFEAD0] font-int font-semibold w-[58px] h-[28px] ${detail.type} px-4 py-1 rounded-md `}>{detail.type}</i>
             <h2 className="font-int font-bold text-[32px] text-[#161616] pt-4">{detail.name}</h2>
