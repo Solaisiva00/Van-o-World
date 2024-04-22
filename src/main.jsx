@@ -6,6 +6,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Vans from "./component/Vans.jsx";
 import './server'
+import Vandetail from "./component/vandetail.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/vans",
         element: <Vans />,
+      },
+      {
+        path: "/vans/:id",
+        element: <Vandetail/>,
       },
     ],
   },
