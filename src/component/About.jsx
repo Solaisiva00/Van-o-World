@@ -10,7 +10,7 @@ const About = () => {
 (Hitch costs extra 😉)
 </p>
 <p className="mt-3 text-clip indent-8 md:indent-0">Our team is full of vanlife enthusiasts who know firsthand the magic of touring the world on 4 wheels.</p>
-<div className="bg-[#FFCC8D] h-[198px] md:h-[220px] px-5 py-6  mb-5 rounded-md my-4  md:px-10 md:">
+<div className="bg-[#FFCC8D] h-[198px] md:h-[220px] px-5 py-6  mb-[100px] rounded-md my-4  md:px-10 md:">
     <h1 className="font-int font-bold text-[22px]  md:text-[30px]">Your destination is waiting.
 Your van is ready.</h1>
 <button className="bg-[#161616] text-white px-9 py-4 font-int font-bold  rounded-lg mt-5 md:py-4 md:mb-9 shadow-md ">Explore our vans</button>

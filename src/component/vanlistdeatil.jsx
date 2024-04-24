@@ -35,7 +35,7 @@ const Vanlistdetail = () => {
           Back to all vans
         </Link>
       </div>
-      <main className="h-[570px] w-[100%] box-border bg-white my-14 rounded-md shadow-xl">
+      <main className="h-[570px] w-[100%] box-border bg-white mt-14 mb-[10rem] rounded-md shadow-xl">
         {detail != null ? (
           <div>
             <section>
@@ -61,7 +61,7 @@ const Vanlistdetail = () => {
                 </div>
               </div>
               <div className="px-5">
-                <ul className="flex gap-8 font-int text-[#4d4d4d]">
+                <ul className="flex gap-8 font-int  text-[#4d4d4d]">
                   <NavLink
                     to="vanlist/:id/detail"
                     className={({ isActive }) =>
