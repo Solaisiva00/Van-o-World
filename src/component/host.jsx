@@ -9,7 +9,7 @@ const Host = () => {
           className={({ isActive }) =>
             isActive
               ? "font-int text-[18px]  text-[#161616] mr-6 font-bold "
-              : "font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+              : "font-int text-[18px]  text-[#4d4d4d] mr-6  "
           }
         >
           Dashbord
@@ -29,7 +29,7 @@ const Host = () => {
           className={({ isActive }) =>
             isActive
               ? "font-int text-[18px]  text-[#161616] mr-6 font-bold "
-              : "font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+              : "font-int text-[18px]  text-[#4d4d4d] mr-6  "
           }
         >
           Vanslist
@@ -39,7 +39,7 @@ const Host = () => {
           className={({ isActive }) =>
             isActive
               ? "font-int text-[18px]  text-[#161616] mr-6 font-bold "
-              : "font-int text-[18px]  text-[#4d4d4d] mr-6 hover:text-black hover:underline hover:font-semibold "
+              : "font-int text-[18px]  text-[#4d4d4d] mr-6  "
           }
         >
           Review

@@ -13,13 +13,17 @@ import Dash from "./component/Dashboard.jsx";
 import Income from "./component/Income.jsx";
 import Vanlist from "./component/Vanlist.jsx";
 import Review from "./component/Review.jsx";
+import Vanlistdetail from "./component/vanlistdeatil.jsx";
+import Detail from "./component/Detail.jsx";
+import Price from "./component/pricing.jsx";
+import Photo from "./component/photo.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
       {
-        index:true,  //render default child
+        index: true, //render default child
         element: <Home />,
       },
       {
@@ -31,32 +35,55 @@ const router = createBrowserRouter([
         element: <Vans />,
       },
       {
-        path:"/host",
-        element:<Host/>,
-        children:[
+        path: "/host",
+        element: <Host />,
+        children: [
+          //nested routes
           // use relative path
           {
-            index:true,  // index routes render content with child
-            element:<Dash/>
+            index: true, // index routes render content with child
+            element: <Dash />,
           },
           {
-            path:"dashboard",
-            element:<Dash/>
+            path: "dashboard",
+            element: <Dash />,
           },
           {
-            path:"income",
-            element:<Income/>
+            path: "income",
+            element: <Income />,
           },
           {
-            path:"vanlist",
-            element:<Vanlist/>
+            path: "vanlist",
+            element: <Vanlist />,
           },
           {
-            path:"review",
-            element:<Review/>
+            path: "vanlist/:id",
+            element: <Vanlistdetail />,
+            children: [
+              {
+                index: true,
+                element: <Detail />,
+              },
+              {
+                path: "vanlist/:id/detail",
+                element: <Detail />,
+              },
+              {
+                path: "vanlist/:id/pricing",
+                element: <Price />,
+              },
+              {
+                path: "vanlist/:id/photo",
+                element: <Photo />,
+              },
+            ],
           },
-        ]
-      }
+          {
+            path: "review",
+            element: <Review />,
+          },
+        ],
+      },
     ],
   },
   {

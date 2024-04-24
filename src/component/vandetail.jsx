@@ -9,7 +9,7 @@ const Vandetail = () => {
       .then((res) => res.json())
       .then((dataa) => setDetail(dataa.vans));
   }, []);
-//   console.log(detail);
+  //   console.log(detail);
   return (
     <div>
       {detail ? (
@@ -40,16 +40,69 @@ const Vandetail = () => {
               alt=""
               className="w-[397px] h-[300px] object-cover mx-auto rounded-md my-10 shadow-xl"
             />
-            <i className={` text-[#FFEAD0] font-int font-semibold w-[58px] h-[28px] ${detail.type} px-4 py-1 rounded-md `}>{detail.type}</i>
-            <h2 className="font-int font-bold text-[32px] text-[#161616] pt-4">{detail.name}</h2>
-            <p className=""><span className="font-bold font-int text-[24px] mr-1">${detail.price}</span>/day</p>
-            <p className="font-int text-[16px] font-light py-3 mb-4 whitespace-normal ">{detail.description}</p>
-            <button className="bg-[#FF8C38] w-[360px] py-2 text-center font-int text-white font-bold rounded-md md:w-[500px]">Rent this van</button>
+            <i
+              className={` text-[#FFEAD0] font-int font-semibold w-[58px] h-[28px] ${detail.type} px-4 py-1 rounded-md `}
+            >
+              {detail.type}
+            </i>
+            <h2 className="font-int font-bold text-[32px] text-[#161616] pt-4">
+              {detail.name}
+            </h2>
+            <p className="">
+              <span className="font-bold font-int text-[24px] mr-1">
+                ${detail.price}
+              </span>
+              /day
+            </p>
+            <p className="font-int text-[16px] font-light py-3 mb-4 whitespace-normal ">
+              {detail.description}
+            </p>
+            <button className="bg-[#FF8C38] w-[360px] py-2 text-center font-int text-white font-bold rounded-md md:w-[500px]">
+              Rent this van
+            </button>
           </div>
         </div>
       ) : (
         <div className="flex justify-center items-center h-screen">
-          <h1 className="font-int text-[30px] font-bold text-slate-800 animate-pulse">loading...</h1>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="4" cy="12" r="3" fill="currentColor">
+              <animate
+                id="svgSpinners3DotsBounce0"
+                attributeName="cy"
+                begin="0;svgSpinners3DotsBounce1.end+0.25s"
+                calcMode="spline"
+                dur="0.6s"
+                keySplines=".33,.66,.66,1;.33,0,.66,.33"
+                values="12;6;12"
+              />
+            </circle>
+            <circle cx="12" cy="12" r="3" fill="currentColor">
+              <animate
+                attributeName="cy"
+                begin="svgSpinners3DotsBounce0.begin+0.1s"
+                calcMode="spline"
+                dur="0.6s"
+                keySplines=".33,.66,.66,1;.33,0,.66,.33"
+                values="12;6;12"
+              />
+            </circle>
+            <circle cx="20" cy="12" r="3" fill="currentColor">
+              <animate
+                id="svgSpinners3DotsBounce1"
+                attributeName="cy"
+                begin="svgSpinners3DotsBounce0.begin+0.2s"
+                calcMode="spline"
+                dur="0.6s"
+                keySplines=".33,.66,.66,1;.33,0,.66,.33"
+                values="12;6;12"
+              />
+            </circle>
+          </svg>
         </div>
       )}
     </div>
