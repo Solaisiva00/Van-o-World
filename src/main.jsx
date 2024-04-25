@@ -17,6 +17,9 @@ import Vanlistdetail from "./component/vanlistdeatil.jsx";
 import Detail from "./component/Detail.jsx";
 import Price from "./component/pricing.jsx";
 import Photo from "./component/photo.jsx";
+import Errorpage from "./component/404.jsx";
+import { loader } from "./component/Vans.jsx";
+import Error from "./component/error.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +36,8 @@ const router = createBrowserRouter([
       {
         path: "vans",
         element: <Vans />,
+        loader: loader,
+        errorElement: <Error />,
       },
       {
         path: "/host",
@@ -83,6 +88,10 @@ const router = createBrowserRouter([
             element: <Review />,
           },
         ],
+      },
+      {
+        path: "*",
+        element: <Errorpage />,
       },
     ],
   },

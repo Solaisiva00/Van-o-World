@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Vandetail = () => {
+  const location = useLocation();
   const param = useParams();
   const [detail, setDetail] = useState();
   useEffect(() => {
@@ -9,12 +10,11 @@ const Vandetail = () => {
       .then((res) => res.json())
       .then((dataa) => setDetail(dataa.vans));
   }, []);
-  //   console.log(detail);
   return (
     <div>
       {detail ? (
         <div className="bg-[#FFF7ED] px-6 py-7 max-w-xl mx-auto md:my-2 md:h-[100%] md:shadow-xl">
-          <div className="flex items-center gap-2 text-[#201f1d6a]">
+          <Link   to={`/vans?${location.state.search}`} className="flex items-center gap-2 text-[#201f1d6a]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -27,13 +27,12 @@ const Vandetail = () => {
                 d="m10 18l-6-6l6-6l1.4 1.45L7.85 11H20v2H7.85l3.55 3.55z"
               />
             </svg>{" "}
-            <Link
-              to="/vans"
+            <p
               className="underline underline-offset-2 font-semibold text-[#201f1d97] font-int text-[14px]"
             >
-              Back to all vans
-            </Link>
-          </div>
+              {`Back to ${location.state.type || "all"} vans`}
+            </p>
+          </Link>
           <div className="py-7">
             <img
               src={detail.imageUrl}

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+ 
 
 const Vanlistdetail = () => {
   const param = useParams();
@@ -12,7 +13,6 @@ const Vanlistdetail = () => {
       .then((res) => res.json())
       .then((dataa) => setDetail(dataa.vans[0]));
   }, []);
-  console.log(detail);
   return (
     <div className="px-5">
       <div className="flex gap-2 text-[#4d4d4d] items-center mt-10">
