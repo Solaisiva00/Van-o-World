@@ -18,8 +18,10 @@ import Detail from "./component/Detail.jsx";
 import Price from "./component/pricing.jsx";
 import Photo from "./component/photo.jsx";
 import Errorpage from "./component/404.jsx";
-import { loader } from "./component/Vans.jsx";
+import { loader as vanloader } from "./component/Vans.jsx";
+import {loader as vandetailloader} from "./component/vandetail.jsx"
 import Error from "./component/error.jsx";
+import Login from "./component/login.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,8 +38,12 @@ const router = createBrowserRouter([
       {
         path: "vans",
         element: <Vans />,
-        loader: loader,
+        loader: vanloader,
         errorElement: <Error />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
       {
         path: "/host",
@@ -48,38 +54,47 @@ const router = createBrowserRouter([
           {
             index: true, // index routes render content with child
             element: <Dash />,
+            loader:async()=>{return null}
           },
           {
             path: "dashboard",
             element: <Dash />,
+            loader:async()=>{return null}
           },
           {
             path: "income",
             element: <Income />,
+            loader:async()=>{return null}
           },
           {
             path: "vanlist",
             element: <Vanlist />,
+            loader:async()=>{return null}
           },
           {
             path: "vanlist/:id",
             element: <Vanlistdetail />,
+            loader:async()=>{return null},
             children: [
               {
                 index: true,
                 element: <Detail />,
+                loader:async()=>{return null}
               },
               {
                 path: "vanlist/:id/detail",
                 element: <Detail />,
+                loader:async()=>{return null}
               },
               {
                 path: "vanlist/:id/pricing",
                 element: <Price />,
+                loader:async()=>{return null}
               },
               {
                 path: "vanlist/:id/photo",
                 element: <Photo />,
+                loader:async()=>{return null}
               },
             ],
           },
@@ -103,6 +118,7 @@ const router = createBrowserRouter([
         <Footer />
       </>
     ),
+    loader:vandetailloader,
   },
 ]);
 

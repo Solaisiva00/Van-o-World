@@ -15,7 +15,7 @@ const Vanlistdetail = () => {
   }, []);
   return (
     <div className="px-5">
-      <div className="flex gap-2 text-[#4d4d4d] items-center mt-10">
+      <Link to="/host/vanlist" className="flex gap-2 text-[#4d4d4d] items-center mt-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -28,13 +28,12 @@ const Vanlistdetail = () => {
             d="m10 18l-6-6l6-6l1.4 1.45L7.85 11H20v2H7.85l3.55 3.55z"
           />
         </svg>{" "}
-        <Link
-          to="/host/vanlist"
+        <div
           className="underline underline-offset-2 font-semibold text-[#201f1d97] font-int text-[16px]"
         >
           Back to all vans
-        </Link>
-      </div>
+        </div>
+      </Link>
       <main className="h-[570px] w-[100%] box-border bg-white mt-14 mb-[10rem] rounded-md shadow-xl">
         {detail != null ? (
           <div>

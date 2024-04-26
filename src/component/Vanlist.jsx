@@ -10,7 +10,6 @@ const Vanlistdetail = () => {
       .then((res) => res.json())
       .then((datalist) => setDeatail(datalist.vans));
   }, []);
-  console.log(detail);
   if (detail.length > 0) {
     hostVansEls = detail.map((van) => (
       <Link to={`/host/vanList/${van.id}`} key={van.id} className="">

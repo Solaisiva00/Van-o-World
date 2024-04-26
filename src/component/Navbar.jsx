@@ -1,3 +1,4 @@
+import icon from "../asset/Icon.svg"
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
@@ -7,7 +8,7 @@ const Nav = () => {
       <NavLink to="/" className="font-int font-bold text-[25px]">
         VANOWORLD
       </NavLink>
-      <ul className="flex gap-6 font-int item-center">
+      <ul className="flex gap-4 font-int item-center">
         <li className="font-semibold text-[#4D4D4D] text-[16px] hover:text-[#161616] hover:font-bold"  >
           <NavLink to="/host"  className={({isActive})=> isActive? "text-[#161616] font-bold":null}>Host</NavLink>
         </li>
@@ -16,6 +17,9 @@ const Nav = () => {
         </li>
         <li className="text-[#4D4D4D] text-[16px] hover:text-[#161616] hover:font-bold"  >
           <NavLink to="/vans"  className={({isActive})=> isActive? "text-[#161616] font-bold":null}>Vans</NavLink>
+        </li>
+        <li>
+          <NavLink to="login"><img src={icon} alt="" /></NavLink>
         </li>
       </ul>
     </nav>
