@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 
 const Host = () => {
-  const isLoggedIn=false;
+  const isLoggedIn=localStorage.getItem("loggin");
   const navigate=useNavigate()
   useEffect(() => {
     if (!isLoggedIn) {
