@@ -7,14 +7,10 @@ const Vandetail = () => {
   const detail = useLoaderData();
   const location = useLocation();
   const param = useParams();
-  // const [detail, setDetail] = useState();
-  // useEffect(() => {
-  //   fetch(`/api/vans/${param.id}`)
-  //     .then((res) => res.json())
-  //     .then((dataa) => setDetail(dataa.vans));
-  // }, []);
+  console.log(param);
+  
   return (
-    <div className="bg-[#FFF7ED] px-6 py-7 max-w-xl mb-20 mx-auto md:my-2 md:h-[100%] md:shadow-xl">
+    <div className="bg-[#FFF7ED] px-6 py-5 max-w-xl  mx-auto md:my-2 md:h-[100%] md:shadow-xl">
       <Link
         to={`/vans?${location.state.search}`}
         className="flex items-center gap-2 text-[#201f1d6a]"
@@ -39,7 +35,7 @@ const Vandetail = () => {
         <img
           src={detail.imageUrl}
           alt=""
-          className="w-[397px] h-[300px] object-cover mx-auto rounded-md my-10 shadow-xl"
+          className="w-[397px] h-[280px] object-cover mx-auto rounded-md my-8 shadow-xl"
         />
         <i
           className={` text-[#FFEAD0] font-int font-semibold w-[58px] h-[28px] ${detail.type} px-4 py-1 rounded-md `}
@@ -58,7 +54,7 @@ const Vandetail = () => {
         <p className="font-int text-[16px] font-light py-3 mb-4 whitespace-normal ">
           {detail.description}
         </p>
-        <button className="bg-[#FF8C38] w-[360px] py-2 text-center font-int text-white font-bold rounded-md md:w-[500px]">
+        <button className="bg-[#FF8C38] w-[360px] py-2 text-center font-int mb-6 text-white font-bold rounded-md md:w-[500px]">
           Rent this van
         </button>
       </div>

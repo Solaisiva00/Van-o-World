@@ -1,6 +1,18 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 
 const Host = () => {
+  const isLoggedIn=false;
+  const navigate=useNavigate()
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login?message=Please logIn to access this page ");
+    }
+  }, [isLoggedIn, navigate]);
+
+  if (!isLoggedIn) {
+    return null; // You may choose to return null or a loading indicator here
+  }
   return (
     <div className="">
       <nav className="px-5 mt-5">
