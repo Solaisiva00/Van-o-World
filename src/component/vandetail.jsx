@@ -1,14 +1,15 @@
 import { useLocation, useParams, useLoaderData, Link } from "react-router-dom";
 import { getVanList } from "../api";
 export  function loader({ params }) {
-  return getVanList(params.id);
+  return  getVanList(params.id);
 }
+
 const Vandetail = () => {
   const detail = useLoaderData();
   const location = useLocation();
   const param = useParams();
-  console.log(param);
-  
+  // console.log(detail);
+
   return (
     <div className="bg-[#FFF7ED] px-6 py-5 max-w-xl  mx-auto md:my-2 md:h-[100%] md:shadow-xl">
       <Link

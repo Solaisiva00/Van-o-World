@@ -25,7 +25,6 @@ export async function getHostVanList(id) {
   const res = await hostVan.json();
   return res.vans;
 }
-
 export async function loginUser(creds) {
   const res = await fetch("/api/login",
       { method: "post", body: JSON.stringify(creds) }

@@ -93,18 +93,24 @@ createServer({
 
     this.get("/vans/:id", (schema, request) => {
       const id = request.params.id;
+      // return new Response(400, {}, {error: "Error fetching data"})
       return schema.vans.find(id);
     });
 
     this.get("/host/vans", (schema, request) => {
       // Hard-code the hostId for now
       return schema.vans.where({ hostId: "123" });
+      // return new Response(400, {}, {error: "Error fetching data"})
     });
 
     this.get("/host/vans/:id", (schema, request) => {
       // Hard-code the hostId for now
       const id = request.params.id;
-      return schema.vans.findBy({ id, hostId: "123" });
+      try {
+        return schema.vans.findBy({ id, hostId: "123" });
+      } catch (error) {
+        return new Response(400, {}, { error: "Error fetching data" });
+      }
     });
 
     this.post("/login", (schema, request) => {
@@ -114,11 +120,7 @@ createServer({
       // in your database 😇
       const foundUser = schema.users.findBy({ email, password });
       if (!foundUser) {
-        return new Response(
-          401,
-          {},
-          { message: "invalid user and password!" }
-        );
+        return new Response(401, {}, { message: "invalid user and password!" });
       }
 
       // At the very least, don't send the password back to the client 😅

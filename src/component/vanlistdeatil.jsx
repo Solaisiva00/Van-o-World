@@ -9,8 +9,7 @@ export function loader({ params }) {
 }
 
 const Vanlistdetail = () => {
-  const detail = useLoaderData()[0];
-
+  const detail = useLoaderData();
   return (
     <div className="px-5">
       <Link

@@ -72,11 +72,13 @@ const router = createBrowserRouter([
             path: "vanlist",
             element: <Vanlist />,
             loader: hostvanlist,
+            errorElement:<Error/>
           },
           {
             path: "vanlist/:id",
             element: <Vanlistdetail />,
             loader: hostvandetail,
+            errorElement:<Error/>,
             children: [
               {
                 index: true,
@@ -85,14 +87,17 @@ const router = createBrowserRouter([
               {
                 path: "vanlist/:id/detail",
                 element: <Detail />,
+                errorElement:<Error/>
               },
               {
                 path: "vanlist/:id/pricing",
                 element: <Price />,
+                errorElement:<Error/>
               },
               {
                 path: "vanlist/:id/photo",
                 element: <Photo />,
+                errorElement:<Error/>
               },
             ],
           },
