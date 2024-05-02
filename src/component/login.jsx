@@ -3,7 +3,8 @@ import {
   Form,
   useActionData,
   useNavigation,
-  Link
+  Link,
+  redirect
 } from "react-router-dom";
 import { loginUser } from "../api";
 import { useEffect, useState } from "react";
@@ -16,7 +17,7 @@ export async function action({ request }) {
     const userData = await loginUser({ email, password });
     localStorage.setItem("loggin", true);
     //need redirect to host
-    window.location.href = "/host";
+    redirect("/host")
     return  null ;
   } catch (err) {
     return err.message;

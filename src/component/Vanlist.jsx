@@ -33,7 +33,7 @@ const Vanlistdetail = () => {
   return (
     <div className="px-5 mt-[2.8rem]">
       <h2 className="font-int font-bold text-[32px]">Your listed vans</h2>
-      <Suspense fallback={<h1>loading...</h1>}>
+      <Suspense fallback={<div className="h-screen"></div>}>
         <Await resolve={promise.vans}>{render}</Await>
       </Suspense>
     </div>

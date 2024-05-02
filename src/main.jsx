@@ -22,6 +22,7 @@ import { loader as vanloader } from "./component/Vans.jsx";
 import { loader as vandetailloader } from "./component/vandetail.jsx";
 import { loader as hostvanlist } from "./component/Vanlist.jsx";
 import { loader as hostvandetail } from "./component/vanlistdeatil.jsx";
+import {loader as dashboard} from "./component/Dashboard.jsx"
 import Error from "./component/error.jsx";
 import Login,{action as loginAction} from "./component/login.jsx";
 // import { requireAuth } from "./Auth.js";
@@ -58,11 +59,12 @@ const router = createBrowserRouter([
           {
             index: true, // index routes render content with child
             element: <Dash />,
-            // loader:async()=>requireAuth()
+            loader:dashboard
           },
           {
             path: "dashboard",
             element: <Dash />,
+            loader:dashboard,
           },
           {
             path: "income",
