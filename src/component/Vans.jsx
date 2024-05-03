@@ -5,12 +5,12 @@ import {
   useLoaderData,
   useSearchParams,
 } from "react-router-dom";
-import { getVanList } from "../api";
+import { getVansList } from "../api";
 import { Suspense } from "react";
 
 //loader function
 export function loader() {
-  return defer({ vanapi: getVanList() });
+  return defer({ vanapi: getVansList() });
 }
 
 //vans functional component

@@ -1,11 +1,11 @@
 import { Outlet, useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { getHostVanList } from "../api";
+import { getVanList} from "../api";
 
 
 export function loader({ params }) {
-  return getHostVanList(params.id);
+  return getVanList(params.id);
 }
 
 const Vanlistdetail = () => {

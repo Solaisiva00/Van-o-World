@@ -1,13 +1,12 @@
 import { Await, Link ,defer,useLoaderData} from "react-router-dom";
-import { getHostVanList } from "../api";
+import { getHostVanLists } from "../api";
 import star from "../asset/star.png";
 import { Suspense } from "react";
 export function loader() {
-  return defer({vanapi: getHostVanList()});
+  return defer({vanapi: getHostVanLists()});
 }
 const Dash = () => {
   const promise = useLoaderData();
-  console.log(promise);
   function render(detail) {
     let hostVansEls = detail.map((van) => (
       <Link to={`/host/vanList/${van.id}`} key={van.id} className="">
