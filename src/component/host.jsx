@@ -1,18 +1,31 @@
-import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
-
+import { auth } from "../api";
 const Host = () => {
-  const isLoggedIn=localStorage.getItem("loggin");
-  const navigate=useNavigate()
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/login?message=Please logIn to access this page ");
-    }
-  }, [isLoggedIn, navigate]);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-  if (!isLoggedIn) {
-    return null; // You may choose to return null or a loading indicator here
-  }
+  // Effect to check user authentication status
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    // Clean-up function for the effect
+    return () => unsubscribe();
+  }, []);
+
+  // Effect to navigate if user is not logged in
+  useEffect(() => {
+    if (user === null) {
+      navigate("/user/login?message=Please log in to access this page");
+    }
+    else{
+      navigate("/host/dashboard")
+    }
+  }, [user, navigate]);
+
   return (
     <div className="">
       <nav className="px-5 mt-5">

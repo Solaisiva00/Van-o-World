@@ -5,7 +5,7 @@ import About from "./component/About.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Vans from "./component/Vans.jsx";
-import "./server";
+// import "./server";
 import Vandetail from "./component/vandetail.jsx";
 import Footer from "./component/footer.jsx";
 import Host from "./component/host.jsx";
@@ -22,10 +22,12 @@ import { loader as vanloader } from "./component/Vans.jsx";
 import { loader as vandetailloader } from "./component/vandetail.jsx";
 import { loader as hostvanlist } from "./component/Vanlist.jsx";
 import { loader as hostvandetail } from "./component/vanlistdeatil.jsx";
-import {loader as dashboard} from "./component/Dashboard.jsx"
+import { loader as dashboard } from "./component/Dashboard.jsx";
 import Error from "./component/error.jsx";
-import Login,{action as loginAction} from "./component/login.jsx";
-// import { requireAuth } from "./Auth.js";
+import Login, { action as loginAction } from "./component/login.jsx";
+import User from "./component/userpage.jsx";
+import Signup from "./component/signup.jsx";
+import { action as signupAction } from "./component/signup.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,12 +48,34 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       {
-        path: "login",
-        element: <Login />,
-        action:loginAction
+        path: "user",
+        element: <User />,
+        children: [
+          {
+            index: true,
+            element: <Login />,
+            action: loginAction,
+          },
+          {
+            path: "login",
+            element: <Login />,
+            action: loginAction,
+          },
+          {
+            path: "signup",
+            element: <Signup />,
+            action: signupAction,
+          },
+          {
+            path: "login/signup",
+            element: <Signup />,
+            action: signupAction,
+          },
+        ],
       },
       {
         path: "/host",
+
         element: <Host />,
         children: [
           //nested routes
@@ -59,12 +83,12 @@ const router = createBrowserRouter([
           {
             index: true, // index routes render content with child
             element: <Dash />,
-            loader:dashboard
+            loader: dashboard,
           },
           {
             path: "dashboard",
             element: <Dash />,
-            loader:dashboard,
+            loader: dashboard,
           },
           {
             path: "income",
@@ -74,13 +98,13 @@ const router = createBrowserRouter([
             path: "vanlist",
             element: <Vanlist />,
             loader: hostvanlist,
-            errorElement:<Error/>
+            errorElement: <Error />,
           },
           {
             path: "vanlist/:id",
             element: <Vanlistdetail />,
             loader: hostvandetail,
-            errorElement:<Error/>,
+            errorElement: <Error />,
             children: [
               {
                 index: true,
@@ -89,17 +113,17 @@ const router = createBrowserRouter([
               {
                 path: "vanlist/:id/detail",
                 element: <Detail />,
-                errorElement:<Error/>
+                errorElement: <Error />,
               },
               {
                 path: "vanlist/:id/pricing",
                 element: <Price />,
-                errorElement:<Error/>
+                errorElement: <Error />,
               },
               {
                 path: "vanlist/:id/photo",
                 element: <Photo />,
-                errorElement:<Error/>
+                errorElement: <Error />,
               },
             ],
           },

@@ -19,7 +19,7 @@ const Nav = () => {
           <NavLink to="/vans"  className={({isActive})=> isActive? "text-[#161616] font-bold":null}>Vans</NavLink>
         </li>
         <li>
-          <NavLink to="login"><img src={icon} alt="" /></NavLink>
+          <NavLink to="user"><img src={icon} alt="" /></NavLink>
         </li>
       </ul>
     </nav>

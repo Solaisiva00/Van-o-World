@@ -4,37 +4,46 @@ import {
   useActionData,
   useNavigation,
   Link,
-  redirect
+  Outlet,
+  useRouteError,
 } from "react-router-dom";
 import { loginUser } from "../api";
 import { useEffect, useState } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../api";
 
 export async function action({ request }) {
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
-  try {
-    const userData = await loginUser({ email, password });
-    localStorage.setItem("loggin", true);
-    //need redirect to host
-    redirect("/host")
-    return  null ;
-  } catch (err) {
-    return err.message;
-  }
+  const signin = await loginUser(email, password);
+  console.log(signin);
+  return signin || null;
 }
 const Login = () => {
   const [param, setParam] = useSearchParams();
-  const [login, setlogin] = useState(localStorage.getItem("loggin"));
-  const [loginData, setLoginData] = useState(null);
+  const [user, setUser] = useState(null);
   const message = param.get("message");
   const [warning, setwarning] = useState(message);
   const actionerr = useActionData();
   const nav = useNavigation();
-  function logout() {
-    localStorage.removeItem("loggin");
-    setLoginData(null);
-    setlogin(null);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    // Clean-up function for the effect
+    return () => unsubscribe();
+  }, [user]);
+
+  //logout
+  async function logout() {
+    try {
+      const status = await signOut(auth);
+      console.log(status);
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
   useEffect(() => {
@@ -47,9 +56,9 @@ const Login = () => {
   }
   return (
     <div>
-      {login === "true" ? (
+      {user != null ? (
         <div className="h-[80vh] flex  flex-col gap-2 relative items-center">
-          {login === "true" && (
+          {user != null && (
             <button
               onClick={logout}
               className="underline underline-offset-1 absolute top-0 right-5 text-[#4d4d4d]"
@@ -57,9 +66,19 @@ const Login = () => {
               log out
             </button>
           )}
-          <h1 className="font-int text-[62px] font-semibold my-10">welcome</h1>
-          <img width="100" height="100" src="https://img.icons8.com/ios-filled/50/user-male-circle.png" alt="user-male-circle"/>
-          <Link to="/host" className="bg-[#fd8900]  text-white font-bold py-3 px-5 rounded-md mt-10">Explore now</Link>
+          <h1 className="font-int text-[38px]  text-center font-semibold my-20">{`Welcome  ${user.email}`}</h1>
+          <img
+            width="100"
+            height="100"
+            src="https://img.icons8.com/ios-filled/50/user-male-circle.png"
+            alt="user-male-circle"
+          />
+          <Link
+            to="/host"
+            className="bg-[#fd8900]  text-white font-bold py-3 px-5 rounded-md mt-10"
+          >
+            Explore now
+          </Link>
         </div>
       ) : (
         <div
@@ -73,7 +92,7 @@ const Login = () => {
           )}
           {actionerr && (
             <h2 className="font-mono text-red-500 font-bold mb-2 ">
-              {actionerr}
+              {actionerr.split("/")[1].replace(").", "")}
             </h2>
           )}
           <h1 className="font-bold text-[32px] mb-5">
@@ -106,12 +125,13 @@ const Login = () => {
           </Form>
           <p className="mt-4">
             Don&apos;t have an account?
-            <a href="" className="text-[#ff8c38] ml-2">
+            <Link to="signup" className="text-[#ff8c38] ml-2">
               create one now
-            </a>
+            </Link>
           </p>
         </div>
       )}
+      <Outlet />
     </div>
   );
 };
