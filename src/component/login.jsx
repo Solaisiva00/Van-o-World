@@ -155,7 +155,7 @@ const Login = () => {
           <p className="mt-4">
             Don&apos;t have an account?
             <Link to="signup" className="text-[#ff8c38] ml-2">
-              create one now
+              create new account
             </Link>
           </p>
         </div>
