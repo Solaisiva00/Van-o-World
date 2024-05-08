@@ -5,12 +5,12 @@ import {
   useNavigation,
   Link,
   Outlet,
-  useRouteError,
 } from "react-router-dom";
 import { loginUser } from "../api";
 import { useEffect, useState } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../api";
+import { provider } from "../api";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -23,10 +23,12 @@ export async function action({ request }) {
 const Login = () => {
   const [param, setParam] = useSearchParams();
   const [user, setUser] = useState(null);
+  const [img, setImg] = useState(null);
   const message = param.get("message");
   const [warning, setwarning] = useState(message);
   const actionerr = useActionData();
   const nav = useNavigation();
+  console.log(img);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -43,6 +45,17 @@ const Login = () => {
       console.log(status);
     } catch (error) {
       console.error(error.message);
+    }
+  }
+
+  //signin with google
+  async function loginWithGoogle() {
+    try {
+      const popup = await signInWithPopup(auth, provider);
+      console.log(popup);
+      setImg(popup.user.photoURL);
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -70,7 +83,7 @@ const Login = () => {
           <img
             width="100"
             height="100"
-            src="https://img.icons8.com/ios-filled/50/user-male-circle.png"
+            src={"https://img.icons8.com/ios-filled/50/user-male-circle.png"}
             alt="user-male-circle"
           />
           <Link
@@ -98,6 +111,22 @@ const Login = () => {
           <h1 className="font-bold text-[32px] mb-5">
             Sign in to your Account
           </h1>
+
+          <button
+            className="px-4  py-2 border flex gap-6 bg-white border-slate-700  rounded-lg dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 hover:shadow transition duration-150 justify-center"
+            onClick={loginWithGoogle}
+          >
+            <img
+              className="w-6 h-6"
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              loading="lazy"
+              alt="google logo"
+            />
+            <span className="text-[#161616] font-int font-semibold">
+              Sign-In with Google
+            </span>
+          </button>
+          <div>or</div>
           <Form method="post" className="flex flex-col w-[100%] gap-3" replace>
             <input
               type="email"

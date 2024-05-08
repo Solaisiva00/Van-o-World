@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  GoogleAuthProvider
 } from "firebase/auth";
 import { collection, doc, getDoc, query, where } from "firebase/firestore/lite";
 import { getFirestore, getDocs } from "firebase/firestore/lite";
@@ -25,6 +26,8 @@ const db = getFirestore(app);
 const collectionRef = collection(db, "vans");
 //auth
 export const auth = getAuth(app);
+//google auth provider
+export const provider=new GoogleAuthProvider()
 
 export async function setUser(email, password) {
   try {

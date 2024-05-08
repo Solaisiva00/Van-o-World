@@ -1,13 +1,5 @@
-import {
-  Form,
-  Link,
-  redirect,
-  useActionData,
-  useNavigation,
-  useRouteError,
-} from "react-router-dom";
+import { Form, Link, useActionData, useNavigation } from "react-router-dom";
 import { setUser } from "../api";
-import { space } from "postcss/lib/list";
 
 //action function
 export async function action({ request }) {
@@ -38,7 +30,9 @@ const Signup = () => {
         <h1 className="font-bold text-[32px] mb-5">Create your Account</h1>
         {err && (
           <h1 className="font-mono text-red-600">
-            {err.split(":")[1] || <span className="text-green-500 text-center">{err}</span>}
+            {err.split(":")[1] || (
+              <span className="text-green-500 text-center">{err}</span>
+            )}
           </h1>
         )}
         <Form method="post" className="flex flex-col w-[100%] gap-3" replace>
